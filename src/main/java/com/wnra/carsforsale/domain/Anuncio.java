@@ -6,23 +6,31 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
+import java.util.Set;
 import java.util.UUID;
 
-@Entity
 @Data
+@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Marca {
+public class Anuncio {
+
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     private UUID id;
 
-    @Column(nullable = false)
-    private String nome;
+    @Embedded
+    private Veiculo veiculo;
 
     @Column(nullable = false)
-    private LocalDateTime dataCriacao;
+    private BigDecimal valor;
 
+    @ManyToOne(optional = false)
+    private Usuario anunciante;
+
+    @ElementCollection
+    @Column(nullable = false)
+    private Set<String> fotosUrl;
 }

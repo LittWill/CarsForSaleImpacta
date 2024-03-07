@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  db:
+    image: mysql
+    command:
+      - --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=@123LittWill
+      - MYSQL_DATABASE=cars-for-sale
+    ports:
+      - "3306:3306"
+  app:
+    image: cars-for-sale-img
+    ports:
+      - "8080:8080"
