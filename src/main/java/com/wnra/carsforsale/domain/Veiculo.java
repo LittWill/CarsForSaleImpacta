@@ -1,20 +1,23 @@
 package com.wnra.carsforsale.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Embeddable
+import java.util.UUID;
+
+@Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Veiculo {
+
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Id
+    private UUID id;
 
     @Column(nullable = false)
     private String modelo;
@@ -26,11 +29,9 @@ public class Veiculo {
     private Double kmRodados;
 
     @Column(nullable = false)
-    private String descricao;
-
-    @Column(nullable = false)
     private String ano;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TipoCombustivel tipoCombustivel;
 

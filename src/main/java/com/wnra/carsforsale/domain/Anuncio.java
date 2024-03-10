@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 
@@ -21,7 +22,8 @@ public class Anuncio {
     @Id
     private UUID id;
 
-    @Embedded
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "veiculo_id")
     private Veiculo veiculo;
 
     @Column(nullable = false)
@@ -33,4 +35,18 @@ public class Anuncio {
     @ElementCollection
     @Column(nullable = false)
     private Set<String> fotosUrl;
+
+    @Column(nullable = false)
+    private String descricao;
+
+    @Column(nullable = false)
+    private LocalDateTime dataPublicacao;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private TipoNegociacao tipoNegociacao;
+
+    public enum TipoNegociacao {
+        VENDA, TROCA, AMBOS
+    }
 }
