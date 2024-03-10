@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -31,10 +30,7 @@ public class CarsForSaleApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Marca chevrolet = Marca.builder().nome("Chevrolet").dataCriacao(LocalDateTime.now()).build();
-		Marca ford = Marca.builder().nome("Ford").dataCriacao(LocalDateTime.now()).build();
-		Marca fiat = Marca.builder().nome("Fiat").dataCriacao(LocalDateTime.now()).build();
-		Marca nissan = Marca.builder().nome("Nissan").dataCriacao(LocalDateTime.now()).build();
+		Marca nissan = Marca.builder().nome("Nissan").fotoUrl("https://www.freepnglogos.com/uploads/nissan-logo-2.png").dataCriacao(LocalDateTime.now()).build();
 
 		Usuario wilson = Usuario.builder()
 				.email("wilson@email.com")
@@ -65,7 +61,7 @@ public class CarsForSaleApplication implements CommandLineRunner {
 						.build())
 				.build();
 
-		marcaRepository.saveAll(List.of(chevrolet, ford, fiat, nissan));
+		marcaRepository.saveAll(List.of(nissan));
 		usuarioRepository.save(wilson);
 		anuncioRepository.save(nissanMarch);
 	}

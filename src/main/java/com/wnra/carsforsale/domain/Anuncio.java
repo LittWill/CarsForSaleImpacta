@@ -22,7 +22,7 @@ public class Anuncio {
     @Id
     private UUID id;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST, optional = false)
     @JoinColumn(name = "veiculo_id")
     private Veiculo veiculo;
 

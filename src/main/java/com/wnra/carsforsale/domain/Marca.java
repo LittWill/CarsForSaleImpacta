@@ -25,4 +25,7 @@ public class Marca {
     @Column(nullable = false)
     private LocalDateTime dataCriacao;
 
+    @Column(nullable = false)
+    private String fotoUrl;
+
 }
