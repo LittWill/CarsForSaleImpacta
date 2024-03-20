@@ -6,8 +6,8 @@ import com.wnra.carsforsale.domain.Marca;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 
-@Mapper(componentModel = "spring")
 @Component
+@Mapper(componentModel = "spring")
 public interface MarcaMapper {
 
     Marca paraEntidade(EntradaMarcaDTO entradaMarcaDTO);

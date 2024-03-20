@@ -14,9 +14,11 @@ import java.util.List;
 @RestController
 @RequestMapping("anuncios")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class AnuncioController {
 
     private final AnuncioService anuncioService;
+
     private final AnuncioMapper anuncioMapper;
 
     @PostMapping
